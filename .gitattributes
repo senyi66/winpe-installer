@@ -1,0 +1,16 @@
+# PowerShell szkriptek: mindig UTF-8 BOM-mal
+*.ps1 text working-tree-encoding=UTF-8-BOM
+*.psd1 text working-tree-encoding=UTF-8-BOM
+
+# Markdown fájlok: sima UTF-8
+*.md text
+
+# Konfigurációs fájlok: sima UTF-8
+*.json text
+*.yaml text
+
+# Ne konvertáljon bináris fájlokat
+*.iso binary
+*.exe binary
+*.wim binary
+*.bin binary
