@@ -1,13 +1,13 @@
 # winpe-installer
-PowerShell-alapú WinPE építő rendszer és ISO generáláshoz. A feladatot MS Copilot segítségével oldottuk meg MiAISoftWare. Azért kellet megoldani, mert nem akart működni a leírás a gépemen és nem tudtam WinPE ISO-t létrehozni. A HwSwInfo már alakulóban, ha jól mükszik akkor majd egy repo ban feltöltöm :).
+PowerShell-alapú WinPE építő rendszer ISO generáláshoz. A feladatot MS Copilot segítségével oldottuk meg. Azért kellet megoldani, mert nem akart működni a leírás szerinti ISO létrehozása a gépemen és nem tudtam WinPE ISO-t létrehozni. A HwSwInfo már alakulóban, ha jól mükszik, akkor majd egy repo-ba feltöltöm :).
 
 # 🧭 WinPE Audit Pendrive – Teljes Rendszerleírás HwSwInfo-hoz
 
 ## 🎯 Cél
 
-Olyan bootolható WinPE pendrive készítése, amely automatikusan:
+Olyan bootolható WinPE pendrive készítése, amely majd futtatni tudja a HwSwInfo script-ez WinPE boot -ról
 
-- 🖥️ kiolvassa a hardver/szoftver adatokat, HwSwInfo
+- 🖥️ kiolvassa a hardver/szoftver adatokat
 - 🌐 hálózatra csatlakozik (DHCP, DNS)
 - 📤 REST API-n keresztül feltölti az adatokat
 - 🧩 modulárisan bővíthető, konfiguráció-vezérelt
