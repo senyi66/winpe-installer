@@ -1,5 +1,5 @@
 # winpe-installer
-PowerShell-alapú WinPE építő rendszer és ISO generáláshoz.
+PowerShell-alapú WinPE építő rendszer és ISO generáláshoz. A feladatot MS Copilot segítségével oldottuk meg MiAISoftWare. Azért kellet megoldani, mert nem akart működni a leírás a gépemen és nem tudtam WinPE ISO-t létrehozni. A HwSwInfo már alakulóban, ha jól mükszik akkor majd egy repo ban feltöltöm :).
 
 # 🧭 WinPE Audit Pendrive – Teljes Rendszerleírás HwSwInfo-hoz
 
@@ -7,7 +7,7 @@ PowerShell-alapú WinPE építő rendszer és ISO generáláshoz.
 
 Olyan bootolható WinPE pendrive készítése, amely automatikusan:
 
-- 🖥️ kiolvassa a hardver/szoftver adatokat
+- 🖥️ kiolvassa a hardver/szoftver adatokat, HwSwInfo
 - 🌐 hálózatra csatlakozik (DHCP, DNS)
 - 📤 REST API-n keresztül feltölti az adatokat
 - 🧩 modulárisan bővíthető, konfiguráció-vezérelt
@@ -21,8 +21,8 @@ Olyan bootolható WinPE pendrive készítése, amely automatikusan:
 | **Kódolás** | Minden `.ps1` fájl: **UTF-8 BOM** |
 | **OS** | Windows 10/11 |
 | **ADK verzió** | 10.1.28000.1 (vagy konfigurálhatóan régebbi) |
-| **Hálózat** | DHCP, internet elérés REST API-hoz |
-| **Pendrive** | ISO kiírása Rufus/Ventoy/diskpart segítségével |
+| **Hálózat** | DHCP, internet elérés REST API-hoz, még nincs|
+| **Pendrive** | ISO kiírása Rufus/Ventoy/diskpart segítségével, még nincs |
 
 ---
 
@@ -59,8 +59,8 @@ Olyan bootolható WinPE pendrive készítése, amely automatikusan:
 | `02_prepare_folders.ps1` | Könyvtárak létrehozása, boot fájlok bemásolása |
 | `03_build_winpe.ps1` | boot.wim másolása, mountolása, audit fájlok beépítése |
 | `04_make_iso.ps1` | ISO generálása oscdimg.exe segítségével |
-| `audit.ps1` | HW/SW adatgyűjtés, REST API feltöltés |
-| `startnet.cmd` | Automatikusan elindítja `audit.ps1`-t boot után |
+| `audit.ps1` | HW/SW adatgyűjtés, REST API feltöltés, még nincs |
+| `startnet.cmd` | Automatikusan elindítja `audit.ps1`-t boot után, még nincs |
 
 ---
 
@@ -83,7 +83,7 @@ Olyan bootolható WinPE pendrive készítése, amely automatikusan:
     WinPEWimSource    = 'C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Windows Preinstallation Environment\amd64\en-us\winpe.wim'
     MountPath         = 'E:\Install\ISO\mount'
 
-    UseQuietInstall   = $true  # vagy $false
+    UseQuietInstall   = $true  #  $true, ha csendes telepítés - $false, ha interaktív telepítést szeretnél
 }
 ```
 ---
@@ -102,7 +102,7 @@ Olyan bootolható WinPE pendrive készítése, amely automatikusan:
 
 ---
 
-## 🧪 Bootolás után – WinPE viselkedés
+## 🧪 Bootolás után – WinPE viselkedés - később teszteléskor, bővebben kiegészítem
 
 - `wpeinit` elindul → hálózat felépül
 - `startnet.cmd` automatikusan fut → elindítja `audit.ps1`-t
@@ -113,7 +113,7 @@ Olyan bootolható WinPE pendrive készítése, amely automatikusan:
 
 ---
 
-## 📤 REST API példa PowerShell-ből
+## 📤 REST API példa PowerShell-ből - később teszteléskor, bővebben kiegészítem
 
 ```powershell
 Invoke-RestMethod -Uri "https://your.api/endpoint" -Method POST -Body $json -ContentType "application/json"
@@ -121,7 +121,7 @@ Invoke-RestMethod -Uri "https://your.api/endpoint" -Method POST -Body $json -Con
 
 ---
 
-## 🧯 Hibaelhárítás
+## 🧯 Hibaelhárítás  - később teszteléskor, bővebben kiegészítem
 
 | Hiba | Megoldás |
 |------|----------|
@@ -132,7 +132,7 @@ Invoke-RestMethod -Uri "https://your.api/endpoint" -Method POST -Body $json -Con
 
 ---
 
-## 🧳 Pendrive készítés
+## 🧳 Pendrive készítés  - később teszteléskor, bővebben kiegészítem
 
 1. ISO kiírása Rufus/Ventoy segítségével
 2. Bootolás BIOS/UEFI módban
@@ -140,7 +140,7 @@ Invoke-RestMethod -Uri "https://your.api/endpoint" -Method POST -Body $json -Con
 
 ---
 
-### ⚙️ Ha interaktív a telepítés winpe_config.psd1 ben a UseQuietInstall   = $false  
+### ⚙️ Ha interaktív a telepítés winpe_config.psd1 ben a UseQuietInstall   = $false akkor a telepítéskor minimális választások.
 ## ✅ Szükséges komponensek WinPE + HWSW információhoz
 
 | Komponens | Szükséges? | Megjegyzés |
